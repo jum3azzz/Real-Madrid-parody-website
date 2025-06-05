@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Gay_Pride_Flag.svg/1200px-Gay_Pride_Flag.svg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add full-screen overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Add close button protection */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 0, 0, 0.3);
+    z-index: 9999;
+    animation: pulse 1s infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 0.3; }
+}
+
+/* Add floating elements */
+.floating-element {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 0, 0, 0.2);
+    border-radius: 50%;
+    z-index: 9997;
+    animation: float 3s infinite;
+    pointer-events: none;
+}
+
+.floating-element:nth-child(1) {
+    top: 10px;
+    right: 10px;
+    animation-delay: 0s;
+}
+
+.floating-element:nth-child(2) {
+    top: 20px;
+    right: 30px;
+    animation-delay: 0.5s;
+}
+
+.floating-element:nth-child(3) {
+    top: 30px;
+    right: 50px;
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(10px, 10px) rotate(90deg); }
+    50% { transform: translate(0, 20px) rotate(180deg); }
+    75% { transform: translate(-10px, 10px) rotate(270deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 1.5rem;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+    width: 450px;
+    height: 350px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.content {
+    text-align: center;
+}
+
+.meme-container {
+    display: none;
+    width: 200px;
+    height: 200px;
+    border-radius: 35px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+.meme-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.meme-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 2px solid rgba(255,255,255,0.2);
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+@keyframes running {
+    0% { transform: translateX(0) rotate(0deg) scale(1); }
+    20% { transform: translateX(20px) rotate(20deg) scale(1.1); }
+    40% { transform: translateX(-20px) rotate(-20deg) scale(0.9); }
+    60% { transform: translateX(20px) rotate(20deg) scale(1.1); }
+    80% { transform: translateX(-20px) rotate(-20deg) scale(0.9); }
+    100% { transform: translateX(0) rotate(0deg) scale(1); }
+}
+
+h1 {
+    color: white;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 2.5em;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#yesBtn {
+    background: #ff6b6b;
+    color: white;
+    box-shadow: 0 0 15px rgba(255,107,107,0.3);
+}
+
+#noBtn {
+    background: #4ecdc4;
+    color: white;
+    position: relative;
+    box-shadow: 0 0 15px rgba(78,205,196,0.3);
+    animation: running 0.8s infinite;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255,107,107,0.5);
+}
+
+.no-btn {
+    background: #ff3333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    animation: rageBait 2s ease infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes rageBait {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+    15% { transform: translate(30px, -20px) rotate(120deg) scale(1.3); opacity: 1; }
+    30% { transform: translate(-25px, 15px) rotate(-240deg) scale(0.7); opacity: 1; }
+    45% { transform: translate(20px, 25px) rotate(180deg) scale(1.2); opacity: 1; }
+    60% { transform: translate(-15px, -30px) rotate(-90deg) scale(0.8); opacity: 1; }
+    75% { transform: translate(10px, 10px) rotate(45deg) scale(0.9); opacity: 0.7; }
+    85% { transform: translate(-5px, -5px) rotate(-30deg) scale(0.5); opacity: 0.3; }
+    100% { transform: translate(0, 0) rotate(0deg) scale(0); opacity: 0; }
+}
+
+.no-btn:hover {
+    background: #ff0000;
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    animation: rageBait 1.5s ease infinite;
+} 
